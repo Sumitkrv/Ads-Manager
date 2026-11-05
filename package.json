@@ -1,0 +1,41 @@
+{
+  "name": "ai-ads-manager",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "packageManager": "npm@11.19.1",
+  "engines": {
+    "node": ">=24 <25",
+    "npm": ">=11 <12"
+  },
+  "workspaces": [
+    "apps/web",
+    "apps/api",
+    "packages/shared"
+  ],
+  "scripts": {
+    "dev": "npm run build --workspace @ai-ads/shared && node scripts/prepare-local-dev.mjs && concurrently --kill-others --names shared,api,web --prefix-colors magenta,blue,cyan \"npm run dev --workspace @ai-ads/shared\" \"npm run dev --workspace @ai-ads/api\" \"npm run dev --workspace @ai-ads/web\"",
+    "dev:api": "npm run build --workspace @ai-ads/shared && node scripts/prepare-local-dev.mjs && concurrently --kill-others --names shared,api --prefix-colors magenta,blue \"npm run dev --workspace @ai-ads/shared\" \"npm run dev --workspace @ai-ads/api\"",
+    "dev:web": "npm run build --workspace @ai-ads/shared && node scripts/prepare-local-dev.mjs && npm run dev --workspace @ai-ads/web",
+    "typecheck": "npm run build --workspace @ai-ads/shared && npm run typecheck --workspace @ai-ads/api && npm run typecheck --workspace @ai-ads/web",
+    "lint": "eslint .",
+    "build": "npm run build --workspace @ai-ads/shared && npm run build --workspace @ai-ads/api && npm run build --workspace @ai-ads/web",
+    "test": "npm run build --workspace @ai-ads/shared && npm run build --workspace @ai-ads/api && npm run test --workspace @ai-ads/api && npm run test --workspace @ai-ads/web",
+    "verify": "npm run typecheck && npm run lint && npm test && npm run build",
+    "test:e2e:prompt11": "node scripts/qa/prompt11-local-auth-smoke.mjs"
+  },
+  "devDependencies": {
+    "@eslint/js": "^10.0.1",
+    "concurrently": "^10.0.6",
+    "eslint": "^10.0.1",
+    "eslint-plugin-react-hooks": "^7.1.1",
+    "eslint-plugin-react-refresh": "^0.5.7",
+    "globals": "^17.13.0",
+    "supabase": "^2.122.0",
+    "typescript": "^6.0.2",
+    "typescript-eslint": "^8.65.0"
+  },
+  "allowScripts": {
+    "esbuild@0.28.2": true
+  }
+}

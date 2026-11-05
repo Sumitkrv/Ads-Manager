@@ -1,0 +1,1 @@
+import{$t as e,tn as t}from"./AuthLayout-DUx4OPTQ.js";var n=t(e(),1),r=(0,n.createContext)(null);function i(){let e=(0,n.useContext)(r);if(!e)throw Error(`useWorkspace must be used within WorkspaceProvider.`);return e}export{i as n,r as t};

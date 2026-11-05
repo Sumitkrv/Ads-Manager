@@ -1,0 +1,30 @@
+{
+  "name": "@ai-ads/api",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "tsx watch --include '../../packages/shared/dist/**' src/server.ts",
+    "build": "tsc -p tsconfig.json",
+    "start": "node dist/server.js",
+    "typecheck": "tsc --noEmit -p tsconfig.json",
+    "lint": "eslint src",
+    "test": "node --test dist/*.test.js dist/agency/*.test.js dist/analytics/*.test.js dist/billing/*.test.js dist/creatives/*.test.js dist/onboarding/*.test.js dist/optimization/*.test.js dist/platform-admin/*.test.js dist/settings/*.test.js dist/tracking/*.test.js"
+  },
+  "dependencies": {
+    "@ai-ads/shared": "0.1.0",
+    "@supabase/supabase-js": "^2.117.1",
+    "cors": "^2.8.6",
+    "dotenv": "^18.0.9",
+    "express": "^5.3.0",
+    "helmet": "^8.3.0",
+    "sharp": "^0.35.5",
+    "zod": "^4.6.5"
+  },
+  "devDependencies": {
+    "@types/cors": "^2.8.19",
+    "@types/express": "^5.0.6",
+    "@types/node": "^24.19.2",
+    "tsx": "^4.23.15"
+  }
+}
